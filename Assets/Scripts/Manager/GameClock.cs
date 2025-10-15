@@ -15,7 +15,6 @@ public class GameClock : MonoBehaviour
     [Tooltip("Total number of in-game hours that make up a night.")]
     [SerializeField] private int hoursPerNight = 6;
 
-    [SerializeField] private int postNightFinishedDelay;
     private int _currentHour = 0;
     private Coroutine _clockCoroutine;
 
@@ -25,12 +24,12 @@ public class GameClock : MonoBehaviour
     /// <remarks>
     /// Subscribers receive the new hour as an integer.
     /// </remarks>
-    public event Action<int> OnTimeChanged;
+    public static event Action<int> OnTimeChanged;
 
     /// <summary>
     /// Fired when the night finishes.
     /// </summary>
-    public event Action OnNightFinished;
+    public static event Action OnNightFinished;
 
     private void OnEnable()
     {
@@ -63,9 +62,6 @@ public class GameClock : MonoBehaviour
 
             OnTimeChanged?.Invoke(GetDisplayHour());
         }
-
-        yield return new WaitForSeconds(postNightFinishedDelay);
-
         OnNightFinished?.Invoke();
     }
 

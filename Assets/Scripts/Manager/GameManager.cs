@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.SocialPlatforms;
+
 
 
 #if UNITY_EDITOR
@@ -35,8 +37,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public event Action<GameState> OnGameStateChanged;
 
-    public event Action OnGameWin;
-    public event Action OnGameLose;
+    public event Action<bool> OnGameWin;
 
     private void Awake()
     {
@@ -56,6 +57,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.LoadScene("MainMenu");
+
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         Application.targetFrameRate = framerate;
@@ -67,24 +70,49 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Game")
         {
             DoorEventManager.OnJumpscareOccurred += GameLose;
+            GameClock.OnNightFinished += IsItemsCollected;
             GameObjective.OnObjectiveCompleted += GameWin;
+        }
+
+        else
+        {
+            DoorEventManager.OnJumpscareOccurred -= GameLose;
+            GameClock.OnNightFinished -= IsItemsCollected;
+            GameObjective.OnObjectiveCompleted -= GameWin;
+        }
+    }
+
+    private void IsItemsCollected()
+    {
+        if (GameObjective.TotalItems != GameObjective.CollectedItems)
+        {
+            GameLose();
+        }
+
+        else
+        {
+            GameWin();
         }
     }
 
     private void GameWin()
     {
-        OnGameWin?.Invoke();
+        OnGameWin?.Invoke(true);
 
-        if (InputManager.Instance != null)
-        {
-            InputManager.Instance.TurnOffInputs();
-        }
-
-        StartCoroutine(GameWinRoutine());
+        StartCoroutine(AfterWinLoseConditionRoutine());
     }
 
-    private IEnumerator GameWinRoutine()
+    private void GameLose()
     {
+        OnGameWin?.Invoke(false);
+
+        StartCoroutine(AfterWinLoseConditionRoutine());
+    }
+
+    private IEnumerator AfterWinLoseConditionRoutine()
+    {
+        SetGameState(GameState.GameOver);
+
         float timer = 3f;
         float elapsed = 0f;
 
@@ -97,15 +125,10 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-    private void GameLose()
-    {
-        OnGameLose?.Invoke();
-        GameOver();
-    }
-
     private void GameOver()
     {
-        QuitGame();
+        SceneManager.LoadScene("MainMenu");
+        SetGameState(GameState.MainMenu);
     }
 
     /// <summary>
@@ -122,20 +145,27 @@ public class GameManager : MonoBehaviour
             case GameState.Playing:
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                Time.timeScale = 1f;
+                AudioListener.pause = false;
+                InputManager.Instance.TurnOnInputs();
                 break;
 
             case GameState.Paused:
             case GameState.GameOver:
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                Time.timeScale = 0f;
+                InputManager.Instance.TurnOffInputs();
+                AudioListener.pause = true;
+                foreach (GameObject localManager in GameObject.FindGameObjectsWithTag("LocalManager"))
+                {
+                    localManager.SetActive(false);
+                }
                 break;
 
             case GameState.MainMenu:
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
-                Time.timeScale = 1f;
+                AudioListener.pause = false;
+                InputManager.Instance.TurnOffInputs();
                 break;
         }
     }

@@ -11,8 +11,6 @@ using UnityEngine;
 [RequireComponent(typeof(TMP_Text))]
 public class GameClockUI : MonoBehaviour
 {
-    [SerializeField] private GameClock gameClock;
-
     private TMP_Text timeText;
 
     private void Awake()
@@ -22,8 +20,7 @@ public class GameClockUI : MonoBehaviour
 
     private void Start()
     {
-        if (gameClock != null)
-            gameClock.OnTimeChanged += UpdateGameClock;
+        GameClock.OnTimeChanged += UpdateGameClock;
 
         UpdateGameClock(12);
     }

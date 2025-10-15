@@ -15,17 +15,17 @@ public class PlayerInventory : MonoBehaviour
     /// <summary>
     /// Fired when an item is added to the inventory.
     /// </summary>
-    public event Action<ItemSO> OnItemPicked;
+    public static event Action<ItemSO> OnItemPicked;
 
     /// <summary>
     /// Fired when an item is dropped from the inventory.
     /// </summary>
-    public event Action<ItemSO> OnItemDropped;
+    public static event Action<ItemSO> OnItemDropped;
 
     /// <summary>
     /// Fired when an item is used from the inventory.
     /// </summary>
-    public event Action<ItemSO> OnItemUsed;
+    public static event Action<ItemSO> OnItemUsed;
 
     /// <summary>
     /// Adds a new item to the first available empty slot in the inventory.

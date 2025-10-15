@@ -260,9 +260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '3D FNAF-style Game (Prototype)
-
-    Not Finished'
+  m_text: 3D Game (Prototype)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1213,89 +1211,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277342471}
   m_CullTransparentMesh: 1
---- !u!1001 &1353349191
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1781305603984147807, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_Name
-      value: Managers
-      objectReference: {fileID: 0}
-    - target: {fileID: 1781305603984147807, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816336060767071993, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: mainmenuMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 40514284b826d2945a3cd6cfdf288aac, type: 3}
-    - target: {fileID: 7816336060767071993, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: sfx3dPoolSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8925691111297959389, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a2d908fd1e81a6d41aac83ed31d7327d, type: 3}
 --- !u!1 &1411798928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,8 +1223,9 @@ GameObject:
   - component: {fileID: 1411798931}
   - component: {fileID: 1411798930}
   - component: {fileID: 1411798929}
+  - component: {fileID: 1411798933}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1401,6 +1317,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1411798933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411798928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ec92ec48e0db041aadaac7ea63261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 1905566652}
+  quitButton: {fileID: 2061533596}
 --- !u!1 &1470132732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,18 +1421,6 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
---- !u!114 &1510047611 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2615213070350224116, guid: a2d908fd1e81a6d41aac83ed31d7327d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1353349191}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a8f3829da57744d809c35aced39514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1567956630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1510047611}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -2379,7 +2297,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1510047611}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -2505,7 +2423,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1353349191}
   - {fileID: 837602486}
   - {fileID: 1411798932}
   - {fileID: 1470132735}

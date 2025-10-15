@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TMP_Text))]
-public class WinText : MonoBehaviour
+public class WinLoseUI : MonoBehaviour
 {
-    [SerializeField] private string textToDisplay;
+    [SerializeField] private string winTextToDisplay;
+    [SerializeField] private string loseTextToDisplay;
 
-    private TMP_Text _winText;
+    private TMP_Text _winLoseText;
 
     private void OnEnable()
     {
@@ -28,11 +27,12 @@ public class WinText : MonoBehaviour
 
     private void Awake()
     {
-        _winText = GetComponent<TMP_Text>();
+        _winLoseText = GetComponent<TMP_Text>();
     }
 
-    private void UpdateUI()
+    private void UpdateUI(bool isWin)
     {
-        _winText.text = textToDisplay;
+        if (isWin) _winLoseText.text = winTextToDisplay;
+        else _winLoseText.text = loseTextToDisplay;
     }
 }

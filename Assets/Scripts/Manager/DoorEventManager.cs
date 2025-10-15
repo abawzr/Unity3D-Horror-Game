@@ -92,7 +92,7 @@ public class DoorEventManager : MonoBehaviour
         {
             if (doors.Count == 0 || knockClips.Count == 0)
             {
-                yield return new WaitForSeconds(1f);
+                yield return null;
                 continue;
             }
 
@@ -100,12 +100,8 @@ public class DoorEventManager : MonoBehaviour
             int randomDoorIndex = UnityEngine.Random.Range(0, doors.Count);
             Door randomDoor = doors[randomDoorIndex];
 
-            Debug.Log($"Picked door: {randomDoor.name}, CurrentState: {randomDoor.CurrentState}");
-
             if (randomDoor.CurrentState == Door.DoorState.Opened)
             {
-                Debug.Log($"Skipped door {randomDoor.name} because it is opened.");
-
                 yield return null;
                 continue;
             }
@@ -123,8 +119,6 @@ public class DoorEventManager : MonoBehaviour
                 // If door opened, break early and skip this knock attempt
                 if (randomDoor.CurrentState == Door.DoorState.Opened)
                 {
-                    Debug.Log($"Door {randomDoor.name} opened during wait. Skipping knock.");
-
                     randomDoor = null;
                     break;
                 }
@@ -136,16 +130,12 @@ public class DoorEventManager : MonoBehaviour
             // Only knock if the door is closed
             if (randomDoor != null && randomDoor.CurrentState == Door.DoorState.Closed)
             {
-                Debug.Log($"Playing knock on door {randomDoor.name}");
-
                 // Play the knock sound at the door's position
                 if (AudioManager.Instance != null)
                     AudioManager.Instance.Play3DSFX(randomKnockClip, randomDoor.transform.position);
             }
             else
             {
-                Debug.Log($"Skipping knock because door is null or opened");
-
                 continue;
             }
         }
@@ -195,7 +185,6 @@ public class DoorEventManager : MonoBehaviour
             {
                 if (mainDoor.CurrentState == Door.DoorState.Opened)
                 {
-                    Debug.Log($"Main Door opened during wait. Skipping slam open.");
                     break;
                 }
 

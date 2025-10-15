@@ -8,8 +8,17 @@ public class GameObjective : MonoBehaviour
     [SerializeField] private List<ObjectiveItem> neededItems;
     [SerializeField] private List<ObjectiveItem> collectedItems;
 
+    public static int TotalItems { get; private set; }
+    public static int CollectedItems { get; private set; }
+
     public static event Action<int, int> OnObjectiveProgress;
     public static event Action OnObjectiveCompleted;
+
+    void Awake()
+    {
+        TotalItems = collectedItems.Count + neededItems.Count;
+        CollectedItems = collectedItems.Count;
+    }
 
     private void OnEnable()
     {
@@ -31,12 +40,10 @@ public class GameObjective : MonoBehaviour
     {
         neededItems.Remove(objectiveItem);
         collectedItems.Add(objectiveItem);
+        CollectedItems++;
 
-        OnObjectiveProgress?.Invoke(CollectedItems(), TotalItems());
+        OnObjectiveProgress?.Invoke(CollectedItems, TotalItems);
 
-        if (CollectedItems() == TotalItems()) OnObjectiveCompleted?.Invoke();
+        if (CollectedItems == TotalItems) OnObjectiveCompleted?.Invoke();
     }
-
-    private int TotalItems() => collectedItems.Count + neededItems.Count;
-    private int CollectedItems() => collectedItems.Count;
 }

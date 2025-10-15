@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8925691111297959389}
   m_Layer: 0
   m_Name: Managers
-  m_TagString: Untagged
+  m_TagString: GlobalManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2615213070350224116}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GlobalManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 1579131476918663047}
   m_Layer: 0
   m_Name: InputManager
-  m_TagString: Untagged
+  m_TagString: GlobalManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 7816336060767071993}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: GlobalManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,5 +170,6 @@ MonoBehaviour:
   masterVolume: 10
   soundEffectsVolume: 10
   musicVolume: 10
-  sfx3dPoolSize: 10
+  sfx3dPoolSize: 20
+  mainmenuMusic: {fileID: 8300000, guid: 40514284b826d2945a3cd6cfdf288aac, type: 3}
   ambientMusic: {fileID: 8300000, guid: 198366e84a02a6c44b1503102d740b13, type: 3}

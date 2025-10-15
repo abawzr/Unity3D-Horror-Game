@@ -104,6 +104,11 @@ public class InputManager : MonoBehaviour
         OnLook?.Invoke(null, Vector2.zero);
     }
 
+    public void TurnOnInputs()
+    {
+        _playerInputActions.Player.Enable();
+    }
+
     #region Handlers
 
     private void HandleMove(InputAction.CallbackContext ctx) => OnMove?.Invoke(ctx.ReadValue<Vector2>());

@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private InventorySlotUI[] _inventorySlots = new InventorySlotUI[3];
 
     private void Start()
     {
-        if (playerInventory != null)
-        {
-            playerInventory.OnItemPicked += AddItem;
-            playerInventory.OnItemDropped += RemoveItem;
-            playerInventory.OnItemUsed += RemoveItem;
-        }
+        PlayerInventory.OnItemPicked += AddItem;
+        PlayerInventory.OnItemDropped += RemoveItem;
+        PlayerInventory.OnItemUsed += RemoveItem;
     }
 
     private void AddItem(ItemSO newItem)
