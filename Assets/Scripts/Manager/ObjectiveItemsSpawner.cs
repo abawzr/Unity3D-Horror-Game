@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class ObjectiveItemsSpawner : MonoBehaviour
@@ -10,6 +8,8 @@ public class ObjectiveItemsSpawner : MonoBehaviour
     private void Start()
     {
         int randomIndex;
+
+        if (spawnPoints.Count == 0) return;
 
         foreach (ObjectiveItem objectiveItem in FindObjectsOfType<ObjectiveItem>(includeInactive: true))
         {

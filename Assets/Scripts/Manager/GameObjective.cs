@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ public class GameObjective : MonoBehaviour
     public static event Action<int, int> OnObjectiveProgress;
     public static event Action OnObjectiveCompleted;
 
-    void Awake()
+    private void Awake()
     {
         TotalItems = collectedItems.Count + neededItems.Count;
         CollectedItems = collectedItems.Count;
@@ -26,6 +25,11 @@ public class GameObjective : MonoBehaviour
         {
             item.OnObjectiveItemCollected += CollectObjectiveItem;
         }
+    }
+
+    private void Start()
+    {
+        OnObjectiveProgress?.Invoke(CollectedItems, TotalItems);
     }
 
     private void OnDisable()

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 /// <summary>
 /// Manages the in-game night cycle, tracking hours and firing events when time changes or night ends.

@@ -6,11 +6,18 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private InventorySlotUI[] _inventorySlots = new InventorySlotUI[3];
 
-    private void Start()
+    private void OnEnable()
     {
         PlayerInventory.OnItemPicked += AddItem;
         PlayerInventory.OnItemDropped += RemoveItem;
         PlayerInventory.OnItemUsed += RemoveItem;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInventory.OnItemPicked -= AddItem;
+        PlayerInventory.OnItemDropped -= RemoveItem;
+        PlayerInventory.OnItemUsed -= RemoveItem;
     }
 
     private void AddItem(ItemSO newItem)

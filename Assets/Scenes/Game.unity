@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427810983}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b808f741455a814dac96ddae7935dd9, type: 3}
   m_Name: 
@@ -3457,8 +3457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb7c39d696f6a34c992a378e2ba51fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCollectedItems: 0
-  defaultTotalItems: 10
 --- !u!64 &710787314
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3869,7 +3867,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 48d1f0d2bd465144b9d0920c6424be33,
         type: 3}
       propertyPath: m_Name
-      value: Psx House 1
+      value: Map
       objectReference: {fileID: 0}
     - target: {fileID: 2239415887478834489, guid: 48d1f0d2bd465144b9d0920c6424be33,
         type: 3}
@@ -8612,9 +8610,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fe6fead129d7f104c933a45af7342c57, type: 3}
   jumpscareClips:
   - {fileID: 8300000, guid: 411439190a9070c43866f0b4362a4781, type: 3}
-  knockIntervalRange: {x: 5, y: 15}
-  slamOpenMainDoorIntervalRange: {x: 500, y: 500}
-  timeBeforeJumpscare: 60
+  knockIntervalRange: {x: 20, y: 30}
+  slamOpenMainDoorIntervalRange: {x: 30, y: 30}
+  timeBeforeJumpscare: 10
   postJumpscareDelay: 4
 --- !u!64 &1366711463
 MeshCollider:
@@ -12167,7 +12165,7 @@ PrefabInstance:
     - target: {fileID: 1469833234494439787, guid: eded6df79fa8c0c4d957fe895bca0897,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.792
+      value: 1.833
       objectReference: {fileID: 0}
     - target: {fileID: 1469833234494439787, guid: eded6df79fa8c0c4d957fe895bca0897,
         type: 3}
@@ -12213,16 +12211,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8909401918592098459, guid: eded6df79fa8c0c4d957fe895bca0897,
-        type: 3}
-      propertyPath: interactionUI
-      value: 
-      objectReference: {fileID: 1985075628}
-    - target: {fileID: 8909401918592098459, guid: eded6df79fa8c0c4d957fe895bca0897,
-        type: 3}
-      propertyPath: interactionRange
-      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

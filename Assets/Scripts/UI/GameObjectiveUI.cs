@@ -4,10 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(TMP_Text))]
 public class GameObjectiveUI : MonoBehaviour
 {
-    [SerializeField] private int defaultCollectedItems = 0;
-    [SerializeField] private int defaultTotalItems = 10;
-
     private TMP_Text _objectiveText;
+
+    private void Awake()
+    {
+        _objectiveText = GetComponent<TMP_Text>();
+    }
 
     private void OnEnable()
     {
@@ -17,16 +19,6 @@ public class GameObjectiveUI : MonoBehaviour
     private void OnDisable()
     {
         GameObjective.OnObjectiveProgress -= UpdateUI;
-    }
-
-    private void Awake()
-    {
-        _objectiveText = GetComponent<TMP_Text>();
-    }
-
-    private void Start()
-    {
-        UpdateUI(defaultCollectedItems, defaultTotalItems);
     }
 
     private void UpdateUI(int collectedItems, int totalItems)

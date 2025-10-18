@@ -9,6 +9,11 @@ public class WinLoseUI : MonoBehaviour
 
     private TMP_Text _winLoseText;
 
+    private void Awake()
+    {
+        _winLoseText = GetComponent<TMP_Text>();
+    }
+
     private void OnEnable()
     {
         if (GameManager.Instance != null)
@@ -23,11 +28,6 @@ public class WinLoseUI : MonoBehaviour
         {
             GameManager.Instance.OnGameWin -= UpdateUI;
         }
-    }
-
-    private void Awake()
-    {
-        _winLoseText = GetComponent<TMP_Text>();
     }
 
     private void UpdateUI(bool isWin)

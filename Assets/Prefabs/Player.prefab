@@ -376,9 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1158c404a42af4140a2fb226ba63a643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionUI: {fileID: 0}
   playerInventory: {fileID: 5479660651116302902}
-  interactionRange: 2
+  interactionRange: 2.5
   playerHead: {fileID: 7461439035575695311}
   interactableLayer:
     serializedVersion: 2

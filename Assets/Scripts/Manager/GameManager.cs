@@ -2,9 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.SocialPlatforms;
-
-
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -55,11 +52,19 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Start()
     {
         SceneManager.LoadScene("MainMenu");
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
 
         Application.targetFrameRate = framerate;
         SetGameState(GameState.MainMenu);
