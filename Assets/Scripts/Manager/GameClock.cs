@@ -49,6 +49,11 @@ public class GameClock : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        OnTimeChanged?.Invoke(GetDisplayHour());
+    }
+
     /// <summary>
     /// Runs the in-game clock, incrementing hours over time and firing events.
     /// </summary>

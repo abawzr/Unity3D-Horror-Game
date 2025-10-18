@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Item : MonoBehaviour, IInteractable
@@ -18,7 +17,7 @@ public class Item : MonoBehaviour, IInteractable
         if (playerInventory != null && !playerInventory.IsInventoryFull())
         {
             playerInventory.AddItem(item);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

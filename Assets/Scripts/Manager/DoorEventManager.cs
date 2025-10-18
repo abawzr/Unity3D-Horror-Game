@@ -173,7 +173,7 @@ public class DoorEventManager : MonoBehaviour
 
             if (mainDoor.CurrentState == Door.DoorState.Opened)
             {
-                yield return new WaitForSeconds(1f);
+                yield return null;
                 continue;
             }
 

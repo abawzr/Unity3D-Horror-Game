@@ -18,11 +18,14 @@ public class GameClockUI : MonoBehaviour
         timeText = GetComponent<TMP_Text>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         GameClock.OnTimeChanged += UpdateGameClock;
+    }
 
-        UpdateGameClock(12);
+    private void OnDisable()
+    {
+        GameClock.OnTimeChanged -= UpdateGameClock;
     }
 
     /// <summary>

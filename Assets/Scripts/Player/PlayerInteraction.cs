@@ -1,3 +1,5 @@
+using System;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 /// <summary>
@@ -7,17 +9,18 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private InteractionUI interactionUI;
     [SerializeField] private PlayerInventory playerInventory;
 
     [Header("Interaction Settings")]
-    [SerializeField] private float interactionRange = 2.0f;
+    [SerializeField] private float interactionRange;
     [SerializeField] private Transform playerHead;
     [SerializeField] private LayerMask interactableLayer;
 
     private const string PROMPT_PRESS = "Press E to ";
     private const string PROMPT_INVENTORY_FULL = "Inventory is Full!";
     private IInteractable _currentTarget;
+
+    public static event Action<string> OnInteractableObjectLook;
 
     /// <summary>
     /// Subscribes to <see cref="InputManager.OnInteract"/> when enabled.
@@ -59,18 +62,34 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = new(playerHead.position, playerHead.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, interactionRange, interactableLayer))
         {
-            if (hitInfo.collider != null)
+            // Ray Hits Something
+            // Invoke OnInteractableObjectLook event
+
+            if (hitInfo.collider.TryGetComponent<IInteractable>(out var interactableObject))
             {
-                IInteractable interactableObject = hitInfo.collider.GetComponent<IInteractable>();
-                if (interactionUI != null && _currentTarget != interactableObject)
+                // There is new interactable object detected
+                if (_currentTarget != interactableObject)
                 {
+                    // Current target not equal to new interactable object
                     _currentTarget = interactableObject;
                     if (playerInventory.IsInventoryFull() && interactableObject is Item)
                     {
-                        interactionUI.SetText(PROMPT_INVENTORY_FULL);
+                        OnInteractableObjectLook?.Invoke(PROMPT_INVENTORY_FULL);
                         return;
                     }
-                    interactionUI.SetText(PROMPT_PRESS + interactableObject?.InteractionPrompt);
+                    OnInteractableObjectLook?.Invoke(PROMPT_PRESS + interactableObject?.InteractionPrompt);
+                }
+                else if (interactableObject is not Item)
+                {
+                    OnInteractableObjectLook?.Invoke(PROMPT_PRESS + interactableObject?.InteractionPrompt);
+                }
+            }
+            else
+            {
+                if (_currentTarget != null)
+                {
+                    _currentTarget = null;
+                    OnInteractableObjectLook?.Invoke(string.Empty);
                 }
             }
         }
@@ -79,7 +98,7 @@ public class PlayerInteraction : MonoBehaviour
             if (_currentTarget != null)
             {
                 _currentTarget = null;
-                interactionUI.ClearText();
+                OnInteractableObjectLook?.Invoke(string.Empty);
             }
         }
     }
@@ -94,11 +113,8 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = new(playerHead.position, playerHead.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, interactionRange, interactableLayer))
         {
-            if (hitInfo.collider != null)
-            {
-                IInteractable interactableObject = hitInfo.collider.GetComponent<IInteractable>();
-                interactableObject?.Interact();
-            }
+            IInteractable interactableObject = hitInfo.collider.GetComponent<IInteractable>();
+            interactableObject?.Interact();
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,16 +9,20 @@ public class InteractionUI : MonoBehaviour
     private void Awake()
     {
         _interactionText = GetComponent<TMP_Text>();
-        ClearText();
     }
 
-    public void SetText(string newText)
+    private void OnEnable()
     {
-        _interactionText.text = newText;
+        PlayerInteraction.OnInteractableObjectLook += UpdateUI;
     }
 
-    public void ClearText()
+    private void OnDisable()
     {
-        _interactionText.text = string.Empty;
+        PlayerInteraction.OnInteractableObjectLook -= UpdateUI;
+    }
+
+    private void UpdateUI(string prompt)
+    {
+        _interactionText.text = prompt;
     }
 }
