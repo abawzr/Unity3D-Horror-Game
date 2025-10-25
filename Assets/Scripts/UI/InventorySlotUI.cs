@@ -20,6 +20,7 @@ public class InventorySlotUI : MonoBehaviour
         currentItem = newItem;
         itemIcon.sprite = newItem.itemIcon;
         itemIcon.enabled = true;
+        itemIcon.preserveAspect = true;
         itemName.text = newItem.itemName;
         HasItem = true;
     }
