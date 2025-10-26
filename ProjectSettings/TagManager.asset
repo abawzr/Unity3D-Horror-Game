@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - GlobalManager
   - LocalManager
+  - AudioSliderUI
   layers:
   - Default
   - TransparentFX
