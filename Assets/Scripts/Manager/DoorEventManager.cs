@@ -202,6 +202,7 @@ public class DoorEventManager : MonoBehaviour
             }
             else
             {
+                yield return null;
                 continue;
             }
         }

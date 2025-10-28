@@ -7,6 +7,10 @@ using UnityEngine;
 public class PlayerFlashLight : MonoBehaviour
 {
     [SerializeField] private Light flashlightSpotLight;
+    [SerializeField] private AudioClip turnOnClip;
+    [SerializeField] private AudioClip turnOffClip;
+
+    private bool _isOff;
 
     /// <summary>
     /// Subscribes to the InputManager's OnFlashlight event.
@@ -26,12 +30,35 @@ public class PlayerFlashLight : MonoBehaviour
             InputManager.Instance.OnFlashlight -= HandleFlashlight;
     }
 
+    private void Awake()
+    {
+        _isOff = true;
+    }
+
     /// <summary>
     /// Toggles the flashlight GameObject on or off.
     /// </summary>
     private void HandleFlashlight()
     {
-        if (flashlightSpotLight != null)
-            flashlightSpotLight.enabled = !flashlightSpotLight.enabled;
+        if (_isOff && !flashlightSpotLight.enabled)
+        {
+            _isOff = false;
+            flashlightSpotLight.enabled = true;
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.Play3DSFX(turnOnClip, transform.position, volume: 0.2f);
+            }
+        }
+        else
+        {
+            _isOff = true;
+            flashlightSpotLight.enabled = false;
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.Play3DSFX(turnOffClip, transform.position, volume: 0.2f);
+            }
+        }
     }
 }

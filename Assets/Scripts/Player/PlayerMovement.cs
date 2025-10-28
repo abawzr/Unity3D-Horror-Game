@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -8,13 +9,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] private float moveSpeed;
 
     [Header("Gravity Settings")]
-    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float gravity;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip footstepClip;
+    [SerializeField] private float footstepAudioInterval;
+    [SerializeField] private float footstepAudioPositionOffset;
 
     private CharacterController _controller;
     private Vector2 _moveInput;
+    private Vector3 _moveDirection;
+    private Vector3 _finalDirection;
     private float _verticalVelocity = -2f;
 
     private void Awake()
@@ -40,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
             InputManager.Instance.OnMove -= HandleMovement;
     }
 
+    private void Start()
+    {
+        StartCoroutine(PlayFootstep());
+    }
+
     /// <summary>
     /// Called once per frame by Unity.  
     /// Handles player movement and gravity application.  
@@ -51,12 +64,12 @@ public class PlayerMovement : MonoBehaviour
     {
         ApplyGravity();
 
-        Vector3 moveDirection = (transform.right * _moveInput.x + transform.forward * _moveInput.y).normalized;
-        Vector3 finalDirection = moveDirection * moveSpeed;
+        _moveDirection = (transform.right * _moveInput.x + transform.forward * _moveInput.y).normalized;
+        _finalDirection = _moveDirection * moveSpeed;
 
-        finalDirection.y = _verticalVelocity;
+        _finalDirection.y = _verticalVelocity;
 
-        _controller.Move(finalDirection * Time.deltaTime);
+        _controller.Move(_finalDirection * Time.deltaTime);
     }
 
     /// <summary>
@@ -81,5 +94,18 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovement(Vector2 input)
     {
         _moveInput = input;
+    }
+
+    private IEnumerator PlayFootstep()
+    {
+        while (true)
+        {
+            if (_moveDirection != Vector3.zero && AudioManager.Instance != null && _controller.isGrounded)
+            {
+                AudioManager.Instance.Play3DSFX(footstepClip, transform.position - Vector3.up * footstepAudioPositionOffset, volume: 0.2f);
+            }
+
+            yield return new WaitForSeconds(footstepAudioInterval);
+        }
     }
 }
