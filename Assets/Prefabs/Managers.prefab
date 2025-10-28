@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a8f3829da57744d809c35aced39514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  framerate: 165
+  framerate: 120
 --- !u!1 &3116405236898554309
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolume: 10
   soundEffectsVolume: 10
-  musicVolume: 10
+  musicVolume: 5
   sfx3dPoolSize: 20
   mainmenuMusic: {fileID: 8300000, guid: 40514284b826d2945a3cd6cfdf288aac, type: 3}
   ambientMusic: {fileID: 8300000, guid: 198366e84a02a6c44b1503102d740b13, type: 3}

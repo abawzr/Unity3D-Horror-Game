@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_moveDirection != Vector3.zero && AudioManager.Instance != null && _controller.isGrounded)
             {
-                AudioManager.Instance.Play3DSFX(footstepClip, transform.position - Vector3.up * footstepAudioPositionOffset, volume: 0.2f);
+                AudioManager.Instance.Play3DSFX(footstepClip, transform.position - Vector3.up * footstepAudioPositionOffset, volume: 0.5f);
             }
 
             yield return new WaitForSeconds(footstepAudioInterval);

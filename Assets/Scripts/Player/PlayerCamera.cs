@@ -15,12 +15,12 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private Transform playerHead;
 
     [Header("Mouse Sensitivity")]
-    [Range(0.1f, 1f)][SerializeField] private float mouseSensitivityX = 0.2f;
-    [Range(0.1f, 1f)][SerializeField] private float mouseSensitivityY = 0.2f;
+    [Range(0.1f, 1f)][SerializeField] private float mouseSensitivityX;
+    [Range(0.1f, 1f)][SerializeField] private float mouseSensitivityY;
 
     [Header("Gamepad Sensitivity")]
-    [Range(0.1f, 1f)][SerializeField] private float gamepadSensitivityX = 0.5f;
-    [Range(0.1f, 1f)][SerializeField] private float gamepadSensitivityY = 0.5f;
+    [Range(0.1f, 1f)][SerializeField] private float gamepadSensitivityX;
+    [Range(0.1f, 1f)][SerializeField] private float gamepadSensitivityY;
 
     /// <summary>
     /// Input vector received from InputManager's OnLook event.

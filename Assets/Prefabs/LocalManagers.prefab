@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2806040036286018197
 Transform:
   m_ObjectHideFlags: 0
@@ -154,6 +154,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  excludedObjectiveItemsFromRandomRespawn:
+  - {fileID: 0}
 --- !u!1 &8139184787516521313
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,5 +270,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b808f741455a814dac96ddae7935dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerHour: 60
+  secondsPerHour: 50
   hoursPerNight: 6
