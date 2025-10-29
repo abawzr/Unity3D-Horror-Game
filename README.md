@@ -28,9 +28,6 @@
 - **Interact / Pick Up Items:** E | **التفاعل / جمع العناصر:** E
 - **Flashlight:** F | **المصباح اليدوي:** F
 
-> Tip: Stay aware of the environment and collect items efficiently to survive the night!  
-> نصيحة: كن منتبهًا للمنزل واجمع العناصر بكفاءة للبقاء على قيد الحياة طوال الليل!
-
 ---
 
 ## 💻 Installation | التثبيت
