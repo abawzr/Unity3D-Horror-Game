@@ -35,4 +35,4 @@
 **Playable Builds:**  
 Download the latest build from [itch.io]().  
 **إصدارات اللعبة الجاهزة:**  
-حمّل أحدث نسخة من [itch.io]().
+[itch.io](). حمّل أحدث نسخة من
