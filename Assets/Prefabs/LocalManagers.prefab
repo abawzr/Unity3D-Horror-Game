@@ -55,9 +55,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fe6fead129d7f104c933a45af7342c57, type: 3}
   jumpscareClips:
   - {fileID: 8300000, guid: 411439190a9070c43866f0b4362a4781, type: 3}
-  knockIntervalRange: {x: 20, y: 30}
-  slamOpenMainDoorIntervalRange: {x: 30, y: 30}
-  timeBeforeJumpscare: 10
+  knockIntervalRange: {x: 10, y: 20}
+  slamOpenMainDoorIntervalRange: {x: 20, y: 20}
+  timeBeforeJumpscare: 15
   postJumpscareDelay: 4
 --- !u!1 &2333870008183132686
 GameObject:
@@ -270,5 +270,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b808f741455a814dac96ddae7935dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerHour: 50
+  secondsPerHour: 30
   hoursPerNight: 6
