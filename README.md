@@ -33,6 +33,6 @@
 ## 💻 Installation | التثبيت
 
 **Playable Builds:**  
-Download the latest build from [itch.io]().  
+Download the latest build from [itch.io](https://shabdullah.itch.io/midnight-house).  
 **إصدارات اللعبة الجاهزة:**  
-[itch.io](). حمّل أحدث نسخة من
+.[itch.io](https://shabdullah.itch.io/midnight-house) حمّل أحدث نسخة من
